@@ -46,8 +46,7 @@ public class Point {
    */
   @Override
   public String toString() {
-    // TODO
-    return "";
+    return "(" + this.x + ", " + this.y + ")";
   }
 
   /**
@@ -58,10 +57,19 @@ public class Point {
    */
   @Override
   public boolean equals(Object o) {
-    // TODO: check that o is a Point (use `instanceof`), cast it, and compare
-    //       the x and y fields.
+    if (this == o) {
+      return true;
+    }
+
+    if (o instanceof Point) {
+      Point other = (Point) o; // Since o points to the object class, if we check x and y, it doesn't have the attributes
+      //so we must make other that FORCES o to point to the Point class
+
+      return this.x == other.x && this.y == other.y;
+    }
     return false;
   }
+
 
   /**
    * Returns a hash code consistent with {@link #equals(Object)} — equal points
@@ -71,7 +79,6 @@ public class Point {
    */
   @Override
   public int hashCode() {
-    // TODO: Objects.hash(x, y) is an easy way to combine the fields.
-    return 0;
+    return Objects.hash(this.x, this.y);
   }
 }
